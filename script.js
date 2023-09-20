@@ -1,4 +1,7 @@
+
+
 let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+
 console.log(itemsArray);
 
 document.querySelector('#addbtn').addEventListener('click', () => {
@@ -6,11 +9,14 @@ document.querySelector('#addbtn').addEventListener('click', () => {
     addItem(item);
 }    
 )
-function addItem(item) { 
-
-    itemsArray.push(item.value);
-    localStorage.setItem('items', JSON.stringify(itemsArray));
-    location.reload();
+function addItem(item) {
+    if (item.value === '') { 
+        alert('Add a list to do!');
+    } else {
+        itemsArray.push(item.value);
+        localStorage.setItem('items', JSON.stringify(itemsArray));
+        location.reload();
+    }
 }
 function readItem() {
 
@@ -96,3 +102,4 @@ window.onload = function(){
     readItem();
 }
 
+    
